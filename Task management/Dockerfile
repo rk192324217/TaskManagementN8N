@@ -19,6 +19,9 @@ WORKDIR /app
 
 # Copy the published app from build stage
 COPY --from=build /app/publish .
-
+# Expose Render's port
+EXPOSE 8080
+# Force ASP.NET Core to listen on the Render-assigned $PORT
+ENV ASPNETCORE_URLS=http://+:8080
 # Start the API
 ENTRYPOINT ["dotnet", "TaskManagement.dll"]
