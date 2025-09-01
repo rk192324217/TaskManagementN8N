@@ -2,24 +2,27 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy everything into the container
-COPY . .
-
-# Go inside Task management folder to restore and build
-WORKDIR "/src/Task management"
+# Copy only project file first (to leverage caching)
+COPY "Task management/MyNotesApi.csproj" "Task management/"
 
 # Restore NuGet packages
-RUN dotnet restore "MyNotes.csproj"
+RUN dotnet restore "Task management/MyNotesApi.csproj"
 
-# Publish the project in Release mode
-RUN dotnet publish "MyNotes.csproj" -c Release -o /app/publish
+# Copy everything else
+COPY . .
+
+# Go into project folder
+WORKDIR "/src/Task management"
+
+# Publish in Release mode
+RUN dotnet publish "MyNotesApi.csproj" -c Release -o /app/publish
 
 # ---------- Runtime Stage ----------
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 
-# Copy the published app
+# Copy published files
 COPY --from=build /app/publish .
 
-# Start the API
-ENTRYPOINT ["dotnet", "MyNotes.dll"]
+# Run the API
+ENTRYPOINT ["dotnet", "MyNotesApi.dll"]
