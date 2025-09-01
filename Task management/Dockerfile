@@ -7,10 +7,10 @@ WORKDIR /src
 COPY . .
 
 # Restore NuGet packages
-RUN dotnet restore "TaskManagement.csproj"
+RUN dotnet restore "MyNotesApi.csproj"
 
 # Publish the project in Release mode to /app/publish
-RUN dotnet publish "TaskManagement.csproj" -c Release -o /app/publish
+RUN dotnet publish "MyNotesApi.csproj" -c Release -o /app/publish
 
 # ---------- Runtime Stage ----------
 # Use a smaller runtime image to run the app
