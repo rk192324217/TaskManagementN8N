@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            min-height: 100vh; /* Ensure background covers full page */
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            background: #333;
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background: #218838;
+            }
+
+        .task {
+            background: #fff3cd;
+            border-left: 6px solid #ffc107;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .completed {
+            background: #d4edda;
+            border-left: 6px solid #28a745;
+            text-decoration: line-through;
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task Manager</h1>
+
+    <h3>Add Task</h3>
+    <input type="text" id="title" placeholder="Task title">
+    <input type="text" id="description" placeholder="Description">
+    <input type="text" id="assignedTo" placeholder="Assign to (User)">
+    <button onclick="addTask()">Add Task</button>
+
+    <h3>Tasks</h3>
+    <div id="taskList"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
