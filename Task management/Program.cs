@@ -21,5 +21,13 @@ app.UseHttpsRedirection();
 // Enable routing and map controllers (API endpoints)
 app.UseRouting();
 app.MapControllers();
+// Bind to Render's dynamic port (falls back to 8080 for local Docker runs)
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+
+// Option A: on the builder (works with minimal hosting)
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+
+// If you already built 'app' earlier, you can alternatively do:
+// app.Urls.Add($"http://0.0.0.0:{port}");
 
 app.Run();
