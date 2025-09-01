@@ -50,7 +50,7 @@ namespace MyNotesApi.Controllers
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             // Replace this with your actual webhook URL from n8n
-            string webhookUrl = "https://rk8115939.app.n8n.cloud/webhook-test/receive-task";
+            string webhookUrl = "https://dustpr.app.n8n.cloud/webhook-test/receive-task";
 
             await client.PostAsync(webhookUrl, content);
 
@@ -76,7 +76,7 @@ namespace MyNotesApi.Controllers
             var json = JsonSerializer.Serialize(task);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            string webhookUrl = "https://rk8115939.app.n8n.cloud/webhook/receive-task";
+            string webhookUrl = "https://dustpr.app.n8n.cloud/webhook-test/receive-task";
             await client.PostAsync(webhookUrl, content);
 
             return NoContent();

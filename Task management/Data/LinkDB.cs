@@ -5,7 +5,7 @@ namespace MyNotesApi.Data
 {
     public static class LinkDB
     {
-        private static readonly string taskFilePath = "C:\\Users\\RajeshKanna\\source\\repos\\MyNotes\\MyNotes\\Notes.json";
+        private static readonly string taskFilePath = "D:\\NEWMERK\\OneDrive\\NEWMERK\\PROGRAMMING\\C#\\MyNotes\\MyNotes\\MyNotes\\Notes.json";
 
         public static void SaveTasks(List<TaskItem> tasks)
         {
